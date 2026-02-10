@@ -25,11 +25,22 @@ def plate_length(plate):
     
 # Rule 3: “Numbers cannot be used in the middle of a plate; they must come at the end. For example, AAA222 would be an acceptable … vanity plate; AAA22A would not be acceptable. The first number used cannot be a ‘0’.”
 def numbers_end(plate):
+    number_started = False
+
+    for char in plate:
+        if char in digits:
+            if not number_started:
+                if char == '0':
+                    return False
+            number_started = True
+        elif number_started and char in letters:
+            return False
     return True
 
 # Rule 4: “No periods, spaces, or punctuation marks are allowed.”
 def no_punctuation(plate):
     for char in plate:
+        char = char.lower()
         if char not in letters and char not in digits:
             return False
     return True
@@ -42,12 +53,16 @@ def is_valid(plate):
                 if no_punctuation(plate):
                     return True
                 else:
+                    # print('No Punctuation rule invalid.')
                     return False
             else:
+                # print('Numbers end rule invalid.')
                 return False
         else:
+            # print('Letters start rule invalid.')
             return False
     else:
+        # print('Plate length invalid.')
         return False
 
 
