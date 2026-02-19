@@ -10,20 +10,28 @@ menu = {
 		"Tortilla Salad": 8.00
 	}
 
+def get_items():
+	total = 0
+	while True:
+		try:
+			item = input('Enter a menu item: ').strip()
+		except EOFError:
+			print()
+			print(f'Total: ${total:.2f}')
+			break
+		item = item.title()
+		try:
+			cost = float(menu[item])
+		except KeyError:
+			print('KeyError: item not found in menu')
+			continue
+		#print(cost)
+		total = total + cost
+	
+
 def main():
-    while True:
-        try:
-            get_item()
-        except EOFError:
-            calculate_total()
+    get_items()
 
-        
-def get_item():
-    item = input('Enter a menu item: ')
-    
-def calculate_total():
-    return
-
-
-if __name__ == '__file__':
+if __name__ == '__main__':
     main()
+    
