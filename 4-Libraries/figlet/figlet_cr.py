@@ -9,7 +9,7 @@ colors = ['RED','GREEN','BLUE','YELLOW','MAGENTA','CYAN','WHITE']
 
 def set_color(c):
     match c:
-        case 'RED':
+        case 'RED': 
             c = Fore.RED
             return c
         case 'GREEN':
