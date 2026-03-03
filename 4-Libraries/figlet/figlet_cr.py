@@ -51,8 +51,18 @@ elif len(sys.argv) == 3:
             c = set_color(c)
         else:
             sys.exit("Invalid font name.")
+    elif sys.argv[1] == "-c" or sys.argv[1] == "--color":
+        random_font_id = randint(0,(len(fonts)-1))
+        f = fonts[random_font_id]
+        figlet.setFont(font=f)
+        c = sys.argv[2].upper()
+        if c in colors:
+            c = set_color(c)
+        else:
+            sys.exit("Invalid color name.")
     else:
-        sys.exit("Invalid usage. First argument must be -f or --font.")
+        sys.exit("Invalid usage. First argument must be -f, --font, -c or --color.")
+
 elif len(sys.argv) == 5:
     if sys.argv[1] == "-f" or sys.argv[1] == "--font":
         f = sys.argv[2]
@@ -60,16 +70,28 @@ elif len(sys.argv) == 5:
             figlet.setFont(font=f)
         else:
             sys.exit("Invalid font name.")
+    elif sys.argv[1] == "-c" or sys.argv[1] == "--color":
+        c = sys.argv[2].upper()
+        if c in colors:
+            c = set_color(c)
+        else:
+            sys.exit("Invalid color name.")
     else:
-        sys.exit("Invalid usage. First argument must be -f or --font.")
+        sys.exit("Invalid usage. First argument must be -f, --font, -c or --color.")
     if sys.argv[3] == "-c" or sys.argv[3] == "--color":
         c = sys.argv[4].upper()
         if c in colors:
             c = set_color(c)
         else:
             sys.exit("Invalid color name.")
+    elif sys.argv[3] == "-f" or sys.argv[3] == "--font":
+        f = sys.argv[4]
+        if f in fonts:
+            figlet.setFont(font=f)
+        else:
+            sys.exit("Invalid font name.")
     else:
-        sys.exit("Invalid usage. Second argument must be -c or --color.")
+        sys.exit("Invalid usage. Second argument must be -f, --font, -c or --color.")
 else:
     sys.exit("Usage: python figlet.py [-f FONT, -c COLOR]")
 
