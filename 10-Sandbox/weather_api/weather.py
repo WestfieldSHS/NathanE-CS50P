@@ -13,7 +13,7 @@ baseUrl = "http://api.openweathermap.org/data/2.5/weather"
 loc = input("Enter city/state name : ")
 
 # Creates a final url for requests from server
-url = baseUrl + "appid=" + key + "&q=" + loc
+url = baseUrl + "?appid=" + key + "&q=" + loc
 
 # To convert json format to python format
 response = requests.get(url)
