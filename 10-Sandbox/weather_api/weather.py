@@ -4,7 +4,7 @@ import json
 import os
 
 # API_KEY from openweather
-key = "4816e56eb799e86afe5da112c152138e"
+key = "REMOVED" #API Key removed from repo and revoked with OpenWeather, TO DO: secure API key to avoid exposing in GIT
 
 # Base URL for openweather
 baseUrl = "http://api.openweathermap.org/data/2.5/weather"
